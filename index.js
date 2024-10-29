@@ -1,35 +1,3 @@
-// const fs = require('fs');
-// const path = require('path');
-// const os = require('os');
-// const activeWin = require('active-win');
- 
-// const logFilePath = path.join(__dirname, 'activity_log.txt'); 
-// const logUserActivity=(async()=>{
-
-//   const username = os.userInfo().username;
-//   const timestamp = new Date().toLocaleString();  
-//   const window = await activeWin();
-//   let appName;
-//   let title;
-//   if (window) {
-//      appName = window.owner.name; // E.g., 'chrome', 'edge'
-//      title = window.title; 
-//   }
-
-//   const logEntry = `User: ${username}, TimeStamp: ${timestamp} \nActive Application: ${appName} --- Window Title: ${title}\n\n`;
-  
-//   fs.appendFile(logFilePath, logEntry, (err) => {
-//     if (err) {
-//       console.error('Error logging activity:', err);
-//     } else {
-//       console.log('Activity logged:', logEntry.trim());
-//     }
-//   });
-// })
-
-// // Log timestamp every 10 seconds
-// setInterval(logUserActivity, 2000);
-
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
@@ -57,7 +25,7 @@ const logUserActivity = async () => {
   const timestamp = new Date().toLocaleString();  
   const window = await activeWin();
   
-  // Check for inactivity (no mouse/keyboard input for 10 seconds)
+  // Check for inactivity (no mouse/keyboard input for 5 seconds)
   if (currentTime - lastActivityTime >= 5000 && !isInactive) {
     const inactivityStart = new Date(lastActivityTime).toLocaleTimeString();
     const inactivityEnd = new Date(currentTime).toLocaleTimeString();
@@ -97,9 +65,7 @@ const resetInactivityTimer = () => {
   lastActivityTime = Date.now();
   isInactive = false;
 };
-
-// Capture user input to track activity
-process.stdin.on('data', resetInactivityTimer); // Keyboard input
-// Here, you may also want to add a listener for mouse events (e.g., with the `robotjs` or `iohook` packages)
+ 
+process.stdin.on('data', resetInactivityTimer); // Keyboard input 
 
 setInterval(logUserActivity, 1000);
