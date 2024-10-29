@@ -128,3 +128,7 @@ User: ahmed.jalal, TimeStamp: 10/29/2024, 6:28:42 PM
 Application: Windows Explorer, Title: DesktopService, Duration: 00:00:01
 User: ahmed.jalal, TimeStamp: 10/29/2024, 6:28:52 PM 
 Application: Google Chrome, Title: AhmadTxend/DesktopService - Google Chrome, Duration: 00:00:03
+User: ahmed.jalal, TimeStamp: 10/29/2024, 6:28:57 PM 
+Application: MSYS2 terminal, Title: MINGW64:/c/Users/ahmed.jalal/Documents/DesktopService, Duration: 00:00:03
+User: ahmed.jalal, TimeStamp: 10/29/2024, 6:29:13 PM 
+Application: MSYS2 terminal, Title: MINGW64:/c/Users/ahmed.jalal/Documents/DesktopService, Duration: 00:00:02
