@@ -5,6 +5,7 @@ const os = require('os');
 const activeWin = require('active-win');
 
 const {formatTime,getFormattedDate,formatTimestamp} = require('../utils/Format');
+const {AppCategories} = require('../Enums/Categories');
 const {logToFile} = require('../controllers/FileLogging');
 
 // const logFilePath = path.resolve(__dirname, '../', process.env.LOG_FILE_PATH);
@@ -21,6 +22,19 @@ let lastActivityTime = Date.now(); // Last user input activity time
 let isInactive = false;         // Flag to track inactivity
 
 
+const getAppCategory = (appName) => {
+  console.log('AppCategories:',AppCategories);
+  console.log('appName:',appName);
+
+  for (const [apps, category ] of Object.entries(AppCategories)) {
+  console.log('apps:',apps);
+      if (apps.includes(appName)) {
+          return category;
+      }
+  }
+  return "Uncategorized";
+};
+
 /////  Function to log user activity
 const logUserActivity = async () => {
   const currentTime = Date.now();
@@ -31,13 +45,21 @@ const logUserActivity = async () => {
   // Log time spent on previous window if it has changed
   if (window && (!lastWindow || window.id !== lastWindow.id)) {
     if (lastWindow){
+
       const timeSpent = currentTime - lastSwitchTime;
+      const startTime = formatTimestamp(new Date(currentTime - timeSpent));
+      const appCategory = getAppCategory(lastWindow.owner.name);
+
+
       const logEntry = {
         user: username,
-        timestamp: formatTimestamp(new Date()),
+        // timestamp: formatTimestamp(new Date()),
         application: lastWindow.owner.name,
+        category: appCategory,
         title: lastWindow.title,
-        duration: formatTime(timeSpent)
+        duration: formatTime(timeSpent),
+        startTime: startTime,
+        endTime: formatTimestamp(new Date()),
     };
       logToFile(logFilePath, logEntry);
     }
