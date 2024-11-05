@@ -2,22 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
-
-// const logToFile = (logFilePath, logEntry) => {
-//     fs.appendFile(logFilePath, logEntry, (err) => {
-//       if (err) { 
-//         console.error('Error logging entry:', err);
-//       } else {
-//         console.log('Entry logged:', logEntry.trim());
-//       }
-//     });
-// };
-
-
 const logToFile = (logFilePath, logEntry) => {
-
-  console.log('logFilePath:',logFilePath);
-  console.log('logEntry:',logEntry);
   let logs = [];
   // Try to read existing data from the JSON file
   try {
