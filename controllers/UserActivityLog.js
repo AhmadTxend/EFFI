@@ -3,13 +3,14 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 const activeWin = require('active-win');
-const screenshot = require('screenshot-desktop');
+// const screenshot = require('screenshot-desktop');
 const puppeteer = require('puppeteer');
-const screenshotDir = path.resolve(__dirname, '../', 'screenshots');
+const screenshotDir = path.resolve(__dirname, '../', 'screenshots_1');
 const {formatTime,getFormattedDate,formatTimestamp} = require('../utils/Format');
 const {AppCategories} = require('../Enums/Categories');
 const {logToFile} = require('../controllers/FileLogging');
- 
+const { Monitor } = require("node-screenshots");
+
 const getActivityLogFilePath = () => {
   const formattedDate = getFormattedDate();
   return path.resolve(__dirname, `../Logs/activity_log_${formattedDate}.js`);
@@ -115,17 +116,33 @@ const getCurrentTabURL = async () => {
   return url;
 };
  
-const captureScreenshot = (context) => {
-    const timestamp = new Date().toISOString().replace(/:/g, '-');
-    const screenshotPath = path.join(screenshotDir, `${context}_${timestamp}.png`);
+const captureScreenshot = async (context) => {
+    // const timestamp = new Date().toISOString().replace(/:/g, '-');
+    // const screenshotPath = path.join(screenshotDir, `${context}_${timestamp}.png`);
    
-    screenshot({ filename: screenshotPath })
-        .then(() => {
-            console.log('Screenshot saved:', screenshotPath);
-        })
-        .catch((error) => {
-            console.error('Error capturing screenshot:', error);
+    // screenshot({ filename: screenshotPath })
+    //     .then(() => {
+    //         console.log('Screenshot saved:', screenshotPath);
+    //     })
+    //     .catch((error) => {
+    //         console.error('Error capturing screenshot:', error);
+    //     });
+  
+    let monitors = Monitor.all(); // Get all connected monitors
+
+    monitors.forEach((monitor) => {
+        const timestamp = new Date().toISOString().replace(/:/g, '-');
+        const screenshotPath = path.join(screenshotDir, `${monitor.id}_${timestamp}.png`);
+        
+        // Capture asynchronous screenshot and save as JPEG
+        monitor.captureImage().then((imageAsync) => {
+            const jpegPath = path.join(screenshotDir, `${monitor.id}_${timestamp}.jpeg`);
+            fs.writeFileSync(jpegPath, imageAsync.toJpegSync()); // Save JPEG format
+        }).catch(error => {
+            console.error(`Error capturing asynchronous screenshot for monitor ${monitor.id}:`, error);
         });
+    });
+
 };
  
 module.exports = { logUserActivity,captureScreenshot };
