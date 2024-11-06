@@ -2258,5 +2258,55 @@
     "startTime": "6 Nov 2024, Time: 13:11:25",
     "endTime": "6 Nov 2024, Time: 13:11:30",
     "createdOn": "6 Nov 2024, Time: 13:11:25"
+  },
+  {
+    "user": "ahmed.jalal",
+    "application": "Windows Command Processor",
+    "category": "Uncategorized",
+    "title": "C:\\WINDOWS\\system32\\cmd.exe ",
+    "duration": "00:00:07",
+    "startTime": "6 Nov 2024, Time: 13:31:20",
+    "endTime": "6 Nov 2024, Time: 13:31:27",
+    "createdOn": "6 Nov 2024, Time: 13:31:20"
+  },
+  {
+    "user": "ahmed.jalal",
+    "timestamp": "11/6/2024, 1:31:29 PM",
+    "application": "Visual Studio Code",
+    "category": "Development",
+    "title": "inactivity_log_2024-11-06.js - DesktopService - Visual Studio Code",
+    "startTime": "6 Nov 2024, Time: 13:31:27",
+    "endTime": "6 Nov 2024, Time: 13:31:29",
+    "duration": "00:00:02"
+  },
+  {
+    "user": "ahmed.jalal",
+    "timestamp": "11/6/2024, 1:31:33 PM",
+    "application": "Visual Studio Code",
+    "category": "Development",
+    "title": "UserInActivityLog.js - DesktopService - Visual Studio Code",
+    "startTime": "6 Nov 2024, Time: 13:31:29",
+    "endTime": "6 Nov 2024, Time: 13:31:33",
+    "duration": "00:00:04"
+  },
+  {
+    "user": "ahmed.jalal",
+    "application": "Visual Studio Code",
+    "category": "Development",
+    "title": "UserInActivityLog.js - DesktopService - Visual Studio Code",
+    "duration": "00:00:58",
+    "startTime": "6 Nov 2024, Time: 13:31:33",
+    "endTime": "6 Nov 2024, Time: 13:32:32",
+    "createdOn": "6 Nov 2024, Time: 13:31:33"
+  },
+  {
+    "user": "ahmed.jalal",
+    "timestamp": "11/6/2024, 1:32:33 PM",
+    "application": "Windows Command Processor",
+    "category": "Uncategorized",
+    "title": "C:\\WINDOWS\\system32\\cmd.exe  - \"node\"   \"C:\\Users\\ahmed.jalal\\AppData\\Roaming\\npm\\\\node_modules\\pm2\\bin\\pm2\" stop index.js",
+    "startTime": "6 Nov 2024, Time: 13:32:32",
+    "endTime": "6 Nov 2024, Time: 13:32:33",
+    "duration": "00:00:01"
   }
 ]
