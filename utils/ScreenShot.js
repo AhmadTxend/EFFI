@@ -3,19 +3,17 @@ const path = require('path');
 const { Monitor } = require("node-screenshots");
 
 const captureScreenshot = (windowTitle,screenshotDir) => {
-   
+    
     if (!fs.existsSync(screenshotDir)) 
     {
         fs.mkdirSync(screenshotDir);
     }
 
-    let monitors = Monitor.all(); // Get all connected monitors
+    let monitors = Monitor.all(); 
 
     monitors.forEach((monitor) => {
-        const timestamp = new Date().toISOString().replace(/:/g, '-');
-        const screenshotPath = path.join(screenshotDir, `${monitor.id}_${timestamp}.png`);
-        
-        // Capture asynchronous screenshot and save as JPEG
+        const timestamp = new Date().toISOString().replace(/:/g, '-'); 
+
         monitor.captureImage().then((imageAsync) => {
             const jpegPath = path.join(screenshotDir, `${monitor.id}_${timestamp}.jpeg`);
             fs.writeFileSync(jpegPath, imageAsync.toJpegSync()); // Save JPEG format
